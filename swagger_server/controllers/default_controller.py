@@ -1,9 +1,10 @@
+from swagger_server.service.student_service import *
+
 import connexion
 import six
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server import util
-from swagger_server.service.student_service import *
 
 
 def add_student(body=None):  # noqa: E501
@@ -18,7 +19,7 @@ def add_student(body=None):  # noqa: E501
     """
     if connexion.request.is_json:
         body = Student.from_dict(connexion.request.get_json())  # noqa: E501
-        return add(body) 
+        return add(body)
     return 500,'error'
 
 
